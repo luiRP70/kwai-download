@@ -6,6 +6,11 @@ const axios = require('axios').default;
 const moment = require('moment');
 const cliProgress = require('cli-progress');
 
+
+module.exports.index = (req, res) => {
+    res.render('index');
+}
+
 console.clear();
 console.log("Bem vindo ao bot do tio Pedro para videos kwai 🎶😎");
 const verify = fs.existsSync(`videos`);
@@ -57,11 +62,13 @@ const downloadVideo = (link, page, videoName) => new Promise(async (resolve) => 
     }
 });
 
-async function robo() {
+module.exports.robo = async function(req, res) {
+    console.log(req.body.link);
+    res.send("Iniciando o robo" + req);
     const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
     const linkkwai = readlineSync.question('Link desejado (Para usar arquivo links digite "all"):') || '';
-    const foreachkwai = require("./links.json");
+    const foreachkwai = require("../../links.json");
     const date = moment().format("YYYY-MM-DD_HHmmss");
 
     const bar1 = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
@@ -82,4 +89,3 @@ async function robo() {
     await browser.close();
 }
 
-robo();

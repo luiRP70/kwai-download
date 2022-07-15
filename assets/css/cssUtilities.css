@@ -1,0 +1,32 @@
+.navbar.navbar-expand-lg.bg-light {
+    background-color: #ffffff !important;
+    border-radius: 30px;
+    transform: scale(0.9) translateY(10px);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #3b3b3b;
+}
+
+.fa.fa-clipboard {
+    color: #3b3b3b;
+}
+
+.background_square {
+    position: fixed;
+    transform: rotate(140deg) translate(317px, -568px);
+    width: 1800px;
+    height: 748px;
+    transform-origin: top;
+    background-color: #ec3e38;
+}
+
+body {
+  height: 100vh;
+  background: repeating-linear-gradient(
+    45deg,
+    #4b4b4b 0px,
+    #464646 590px
+  );
+}

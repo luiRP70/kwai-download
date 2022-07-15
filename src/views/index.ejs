@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Bot Tio Pedrão</title>
+
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="/assets/css/cssUtilities.css" rel="stylesheet">
+</head>
+
+<body style="background-color:#3b3b3b;">
+    <!-- <div class="background_square"></div> -->
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <h3 class="navbar-brand" style="margin-top: 6px;"><b>Bot tio Pedro</b></h3>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fa fa-clipboard"></i>
+                            Links
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <br /><br /><br />
+        <h3 style="color: #ffffff;">Bot Tio Pedrão</h3>
+        <div class="input-group">
+            <input type="text" name="link" id="link" class="form-control" placeholder="Cole o link do video aqui...">
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-success" id="Addcodigo_ap" onclick="enviar_link()">
+                    <i class="fa fa-search"></i> Baixar
+                </button>
+            </span>
+        </div>
+        <h6 style="color: #919191;">Este bot foi feito exclusivamente para o tio Pedroca, cole seus videos na aba links
+            ou pesquisa na barra de pesquisa acima para baixar</h6>
+    </div>
+</body>
+
+<script src="/node_modules/axios/dist/axios.min.js"></script>
+
+<script>
+    function enviar_link(req, res) {
+        link = document.getElementById('link').value;
+        if (link.length > 0) {
+            axios({
+                method: 'post',
+                url: '/robo',
+                data: {
+                    link: link
+                }
+            }).then(function (response) {
+                console.log(response.data);
+                if (response.data.status == 'success') {
+                    alert('Video adicionado com sucesso!');
+                } else {
+                    alert('Erro ao adicionar video!');
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    }
+</script>
+
+</html>

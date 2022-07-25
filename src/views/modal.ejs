@@ -1,0 +1,40 @@
+<form id="iLoading" action="" method="post">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Links</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label for="links"><b>Baixar todos os links</b></label>
+                        <textarea name="links" id="links" class="form-control" rows="10"
+                            placeholder="Cole o link do video aqui..."></textarea>
+                    </div>
+                    <div class="col-sm-12">
+                        <br>
+                        <label for="playlist"><b>Baixar playlists</b></label>
+                        <input type="text" name="playlist" id="playlist" class="form-control"
+                            placeholder="Caso seja playlist, cole o link de compartilhamento aqui...">
+                    </div>
+                    <div class="spinner-border" role="status"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="submit" class="btn btn-primary"><i id="iLoading"></i> Enviar</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script type="text/javascript">
+    {
+
+        $("#iLoading").submit(function (e) {
+            console.log('teste');
+            e.preventDefault();
+        });
+
+    }
+</script>

@@ -5,11 +5,34 @@ const fs = require('fs');
 const axios = require('axios').default;
 const moment = require('moment');
 const cliProgress = require('cli-progress');
+const app = require('../app');
 
+module.exports.loadmodal = async function (req, res) {
+    const data = {};
+
+    try {
+        if (req.query) {
+            console.log("aqui");
+            // const id = req.query.id;
+            // data['pessoa'] = await app.findByPk(id);
+        }
+        res.render("modal", data);
+    } catch (error) {
+        res.status(500).send(error);
+        console.log(error);
+    }
+}
+
+module.exports.create = (req, res) => {
+}
+
+module.exports.update = (req, res) => {
+}
 
 module.exports.index = (req, res) => {
     res.render('index');
 }
+
 
 console.clear();
 console.log("Bem vindo ao bot do tio Pedro para videos kwai 🎶😎");
@@ -62,7 +85,7 @@ const downloadVideo = (link, page, videoName) => new Promise(async (resolve) => 
     }
 });
 
-module.exports.robo = async function(req, res) {
+module.exports.robo = async function (req, res) {
     console.log(req.body.link);
     res.send("Iniciando o robo" + req);
     const browser = await puppeteer.launch({ headless: true });

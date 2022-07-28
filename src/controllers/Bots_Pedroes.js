@@ -7,12 +7,11 @@ const moment = require('moment');
 const cliProgress = require('cli-progress');
 const app = require('../app');
 
-module.exports.loadmodal = async function (req, res) {
+module.exports.loadmodal = async function(req, res) {
     const data = {};
 
     try {
         if (req.query) {
-            console.log("aqui");
             // const id = req.query.id;
             // data['pessoa'] = await app.findByPk(id);
         }
@@ -23,11 +22,9 @@ module.exports.loadmodal = async function (req, res) {
     }
 }
 
-module.exports.create = (req, res) => {
-}
+module.exports.create = (req, res) => {}
 
-module.exports.update = (req, res) => {
-}
+module.exports.update = (req, res) => {}
 
 module.exports.index = (req, res) => {
     res.render('index');
@@ -55,7 +52,7 @@ const generateRandomString = (num) => {
     return result1;
 }
 
-const downloadVideo = (link, page, videoName) => new Promise(async (resolve) => {
+const downloadVideo = (link, page, videoName) => new Promise(async(resolve) => {
     try {
         await page.goto(link);
 
@@ -85,12 +82,18 @@ const downloadVideo = (link, page, videoName) => new Promise(async (resolve) => 
     }
 });
 
-module.exports.robo = async function (req, res) {
-    console.log(req.body.link);
-    res.send("Iniciando o robo" + req);
-    const browser = await puppeteer.launch({ headless: true });
+module.exports.robo = async function(req, res) {
+
+    if ((req.body.link).length === 0) {
+        var linkkwai = readlineSync.question('Link desejado (Para usar arquivo links digite "all"):') || '';
+    } else {
+        var linkkwai = req.body.link;
+    }
+
+    const browser = await puppeteer.launch({
+        headless: true
+    });
     const page = await browser.newPage();
-    const linkkwai = readlineSync.question('Link desejado (Para usar arquivo links digite "all"):') || '';
     const foreachkwai = require("../../links.json");
     const date = moment().format("YYYY-MM-DD_HHmmss");
 
@@ -111,4 +114,3 @@ module.exports.robo = async function (req, res) {
 
     await browser.close();
 }
-

@@ -22,24 +22,26 @@
 </head>
 
 
-<body style="background-color:#3b3b3b;">
-    <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid">
-            <h3 class="navbar-brand" style="margin-top: 6px; position:relative;"><b>Bot tio Pedro</b></h3>
-            <div id="parte_tras_name" style="background-color:#546575; position:absolute;"></div>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <button type="button" id="botao_nav" class="btn nav-link text-white" data-toggle="modal"
-                            data-target="#crud">
-                            <i class="fa fa-clipboard"></i>
-                            Links
-                        </button>
-                    </li>
-                </ul>
+<body style="background-color:#3b3b3b;z-index:-2;">
+    <div id="mask1">
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+                <h3 class="navbar-brand" style="margin-top: 6px; position:relative;"><b>Bot tio Pedro</b></h3>
+                <div id="parte_tras_name" style="background-color:#546575; position:fixed;"></div>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <button type="button" id="botao_nav" class="btn nav-link text-white" data-toggle="modal"
+                                data-target="#crud">
+                                <i class="fa fa-clipboard"></i>
+                                Links
+                            </button>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
     <div class="container">
         <br /><br /><br />
         <h3 style="color: #ffffff;">Bot Tio Pedrão</h3>
@@ -61,6 +63,11 @@
             <h6 style="color: #919191;">Este bot foi feito exclusivamente para o tio Pedroca, cole seus videos na aba
                 links ou no campo de pesquisa acima para baixar</h6>
         </div>
+    </div>
+
+    <div>
+        <img src="assets\images\velho.png" alt="Velho"
+            style="transform: scale(1) translateY(12vh); filter: drop-shadow(30px 30px 50px #92e6ff); position: fixed; bottom: 0; right: 0; z-index:0;">
     </div>
 
     <div class="modal fade" id="crud" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
@@ -114,6 +121,7 @@
                 console.log(error);
             });
         })
+
     </script>
 </body>
 

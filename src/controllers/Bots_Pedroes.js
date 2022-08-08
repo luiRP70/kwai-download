@@ -52,7 +52,7 @@ const generateRandomString = (num) => {
     return result1;
 }
 
-const downloadVideo = (link, page, videoName) => new Promise(async(resolve) => {
+const downloadVideo = (link, page, videoName, req, res) => new Promise(async(resolve) => {
     try {
         await page.goto(link);
 
@@ -75,6 +75,7 @@ const downloadVideo = (link, page, videoName) => new Promise(async(resolve) => {
         }
 
         file.on("finish", () => {
+            
             resolve("Download Completed");
         });
     } catch (error) {
@@ -83,7 +84,6 @@ const downloadVideo = (link, page, videoName) => new Promise(async(resolve) => {
 });
 
 module.exports.robo = async function(req, res) {
-
     if ((req.body.link).length === 0) {
         var linkkwai = readlineSync.question('Link desejado (Para usar arquivo links digite "all"):') || '';
     } else {
@@ -109,8 +109,9 @@ module.exports.robo = async function(req, res) {
         }
         bar1.stop();
     } else {
-        await downloadVideo(linkkwai, page, videoName);
+        await downloadVideo(linkkwai, page, videoName, req, res);
     }
 
     await browser.close();
+    res.status(200).send("Download Completo");
 }

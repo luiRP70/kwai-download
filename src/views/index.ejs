@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Bot Tio Pedrão</title>
+    <link rel="shortcut icon" href="assets\images\destroyed.ico">
 
     <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
@@ -44,8 +45,13 @@
         <br /><br /><br />
         <h3 style="color: #ffffff;">Bot Tio Pedrão</h3>
         <div class="upload-wrapper">
-            <div class="upload drop-area" style="width: 100%;">
+            <div class="upload drop-area" style="width: 100%;filter: drop-shadow(0px 2px 0px #ff7979)">
                 <div class="upload-info" style="width: 100%;">
+                    <div id="upload-animation">
+                        <div id="upload-overflow">
+                            <div id="upload-bar"></div>
+                        </div>
+                    </div>
                     <div class="input-group">
                         <input type="text" name="link" id="link" class="form-control upload-filename"
                             placeholder="Cole o link do video aqui...">
@@ -64,8 +70,10 @@
     </div>
 
     <div>
-        <img src="assets\images\velho.png" alt="Velho"
-            style="transform: scale(1) translateY(12vh); filter: drop-shadow(30px 30px 50px #92e6ff); position: fixed; bottom: 0; right: 0; z-index:0;">
+        <img src="assets\images\velho1.png" alt="Velho"
+            style="min-width: 30%; min-height: 30%; max-width: 50%; max-height: 50%; transform: scaleX(-1) translateY(6vh) translateX(-15vh); position: fixed; bottom: 0; right: 0; z-index:-1;">
+        <img src="assets\images\destroyed.png" alt="Planeta"
+            style="min-width: 30%; min-height: 30%; max-width: 60%; max-height: 60%; transform: scaleX(-1) translateY(12vh); filter: drop-shadow(-28px 33px 112px #ff7979); position: fixed; bottom: 0; right: 0; z-index:-2;">
     </div>
 
     <div class="modal fade" id="crud" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
@@ -90,6 +98,12 @@
         function enviar_link(req, res) {
             link = document.getElementById('link').value;
             if (link.length > 0) {
+
+                document.getElementById('enviar_link').disabled = true;
+                document.getElementById('enviar_link').innerHTML = '<i class="fa fa-spinner fa-pulse"></i> Enviando...';
+                document.getElementById('upload-animation').classList.add('upload-animation');
+                document.getElementById('upload-overflow').classList.add('upload-overflow');
+                document.getElementById('upload-bar').classList.add('upload-bar');
                 axios({
                     method: 'post',
                     url: '/robo',
@@ -97,9 +111,14 @@
                         link: link
                     }
                 }).then(function (response) {
-                    console.log(response.data);
-                    if (response.data.status == 'success') {
-                        alert('Video adicionado com sucesso!');
+                    console.log(response);
+                    if (response.status == 200) {
+                        document.getElementById('enviar_link').disabled = false;
+                        document.getElementById('enviar_link').innerHTML = '<i class="fa fa-search"></i> Baixar';
+
+                        document.getElementById('upload-animation').classList.remove('upload-animation');
+                        document.getElementById('upload-overflow').classList.remove('upload-overflow');
+                        document.getElementById('upload-bar').classList.remove('upload-bar');
                     } else {
                         alert('Erro ao adicionar video!');
                     }

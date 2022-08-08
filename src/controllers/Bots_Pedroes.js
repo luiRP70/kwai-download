@@ -7,7 +7,7 @@ const moment = require('moment');
 const cliProgress = require('cli-progress');
 const app = require('../app');
 
-module.exports.loadmodal = async function(req, res) {
+module.exports.loadmodal = async function (req, res) {
     const data = {};
 
     try {
@@ -22,9 +22,9 @@ module.exports.loadmodal = async function(req, res) {
     }
 }
 
-module.exports.create = (req, res) => {}
+module.exports.create = (req, res) => { }
 
-module.exports.update = (req, res) => {}
+module.exports.update = (req, res) => { }
 
 module.exports.index = (req, res) => {
     res.render('index');
@@ -52,7 +52,7 @@ const generateRandomString = (num) => {
     return result1;
 }
 
-const downloadVideo = (link, page, videoName, req, res) => new Promise(async(resolve) => {
+const downloadVideo = (link, page, videoName, req, res) => new Promise(async (resolve) => {
     try {
         await page.goto(link);
 
@@ -75,7 +75,7 @@ const downloadVideo = (link, page, videoName, req, res) => new Promise(async(res
         }
 
         file.on("finish", () => {
-            
+
             resolve("Download Completed");
         });
     } catch (error) {
@@ -83,7 +83,7 @@ const downloadVideo = (link, page, videoName, req, res) => new Promise(async(res
     }
 });
 
-module.exports.robo = async function(req, res) {
+module.exports.robo = async function (req, res) {
     if ((req.body.link).length === 0) {
         var linkkwai = readlineSync.question('Link desejado (Para usar arquivo links digite "all"):') || '';
     } else {

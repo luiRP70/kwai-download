@@ -58,13 +58,36 @@
     overflow: hidden;
 }
 
+.upload-animation-done {
+    width: 165vh;
+    height: 100px;
+    position: absolute;
+    background-color: #485461;
+    transform: translateX(-20px);
+    animation: ease;
+    animation-name: upload-animation-done;
+    animation-duration: 1s;
+    z-index: 1000;
+    overflow: hidden;
+}
+
 @keyframes upload-animation {
     0% {
-        transform: translateX(-20px) translateY(100%);
+        transform: translateX(-20px) translateX(-100%);
     }
 
     100% {
-        transform: translateX(-20px) translateY(0%);
+        transform: translateX(-20px) translateX(0%);
+    }
+}
+
+@keyframes upload-animation-done {
+    0% {
+        transform: translateX(-20px) translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-20px) translateX(-100%);
     }
 }
 
@@ -140,7 +163,14 @@ body {
 }
 
 .upload-button {
-    background: #ef5350;
+    background: #ef5350 !important;
     border: none;
     outline: none;
+}
+
+.btn {
+    color: #fff;
+    background-color: #d33e3b !important;
+    border-color: #d33e3b !important;
+    cursor: pointer !important;
 }

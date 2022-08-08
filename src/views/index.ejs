@@ -56,7 +56,7 @@
                         <input type="text" name="link" id="link" class="form-control upload-filename"
                             placeholder="Cole o link do video aqui...">
                         <span class="input-group-btn">
-                            <button type="button" class="btn btn-success upload-button" style="height: 38px;"
+                            <button type="button" class="btn btn-danger upload-button" style="height: 38px;"
                                 id="enviar_link" onclick="enviar_link()">
                                 <i class="fa fa-search"></i> Baixar
                             </button>
@@ -117,8 +117,12 @@
                         document.getElementById('enviar_link').innerHTML = '<i class="fa fa-search"></i> Baixar';
 
                         document.getElementById('upload-animation').classList.remove('upload-animation');
-                        document.getElementById('upload-overflow').classList.remove('upload-overflow');
-                        document.getElementById('upload-bar').classList.remove('upload-bar');
+                        document.getElementById('upload-animation').classList.add('upload-animation-done');
+                        setTimeout(() => {
+                            document.getElementById('upload-animation').classList.remove('upload-animation-done');
+                            document.getElementById('upload-overflow').classList.remove('upload-overflow');
+                            document.getElementById('upload-bar').classList.remove('upload-bar');
+                        }, 800);
                     } else {
                         alert('Erro ao adicionar video!');
                     }

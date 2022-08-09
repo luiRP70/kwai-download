@@ -113,12 +113,16 @@
                 }).then(function (response) {
                     console.log(response);
                     if (response.status == 200) {
+                        window.open(`/robo/download?file=${response.data}`, '_self');
+
                         document.getElementById('enviar_link').disabled = false;
                         document.getElementById('enviar_link').innerHTML = '<i class="fa fa-search"></i> Baixar';
 
                         document.getElementById('upload-animation').classList.remove('upload-animation');
                         document.getElementById('upload-animation').classList.add('upload-animation-done');
                         setTimeout(() => {
+
+
                             document.getElementById('upload-animation').classList.remove('upload-animation-done');
                             document.getElementById('upload-overflow').classList.remove('upload-overflow');
                             document.getElementById('upload-bar').classList.remove('upload-bar');

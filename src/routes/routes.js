@@ -11,6 +11,10 @@ router.post('/robo', (req, res) => {
     indexController.robo(req, res);
 });
 
+router.get('/robo/download', (req, res) => {
+    indexController.download(req, res);
+});
+
 router.get('/robo/inserireditar', (req, res) => {
     indexController.loadmodal(req, res);
 });

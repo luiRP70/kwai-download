@@ -163,14 +163,7 @@ body {
 }
 
 .upload-button {
-    background: #ef5350 !important;
+    background: #ff7373 !important;
     border: none;
     outline: none;
-}
-
-.btn {
-    color: #fff;
-    background-color: #d33e3b !important;
-    border-color: #d33e3b !important;
-    cursor: pointer !important;
 }

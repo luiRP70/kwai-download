@@ -6,6 +6,7 @@ const axios = require('axios').default;
 const moment = require('moment');
 const cliProgress = require('cli-progress');
 const app = require('../app');
+const os = require('os');
 
 module.exports.loadmodal = async function (req, res) {
     const data = {};
@@ -22,7 +23,9 @@ module.exports.loadmodal = async function (req, res) {
     }
 }
 
-module.exports.create = (req, res) => { }
+module.exports.download = (req, res) => {
+    res.download(req.query.file);
+}
 
 module.exports.update = (req, res) => { }
 
@@ -61,7 +64,7 @@ const downloadVideo = (link, page, videoName, req, res) => new Promise(async (re
 
         let file;
         if (isYouTube) {
-            file = ytdl(link).pipe(fs.createWriteStream(`videos/${videoName}.mp4`));
+            file = ytdl(link).pipe(fs.createWriteStream(os.tmpdir() + `/${videoName}.mp4`));
         } else {
             const resultado = await page.evaluate(() => document.querySelector("#video-ele").src);
 
@@ -71,11 +74,10 @@ const downloadVideo = (link, page, videoName, req, res) => new Promise(async (re
                 responseType: 'stream'
             });
 
-            file = response.data.pipe(fs.createWriteStream(`videos/${videoName}.mp4`));
+            file = response.data.pipe(fs.createWriteStream(os.tmpdir() + `/${videoName}.mp4`));
         }
 
         file.on("finish", () => {
-
             resolve("Download Completed");
         });
     } catch (error) {
@@ -113,5 +115,5 @@ module.exports.robo = async function (req, res) {
     }
 
     await browser.close();
-    res.status(200).send("Download Completo");
+    res.status(200).send(os.tmpdir() + `/${videoName}.mp4`);
 }

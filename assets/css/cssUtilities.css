@@ -21,21 +21,21 @@
 }
 
 .upload-overflow {
-    width: 155vh;
+    width: 141.5vh;
     height: 15px;
     position: absolute;
     border-radius: 30px;
-    transform: translateY(6.5vh) translateX(20px);
+    transform: translateY(5.9vh) translateX(20px);
     z-index: 800;
     overflow: hidden;
 }
 
 .upload-bar {
     width: 40%;
-    height: 15px;
+    height: 18px;
     left: -100%;
     position: absolute;
-    transform: translate(0, -0.12vh);
+    transform: translate(0, -0.117vh);
     background-color: #323b44;
     border-radius: 30px;
     animation: infinite;
@@ -93,17 +93,17 @@
 
 @keyframes upload-bar {
     0% {
-        transform: translate(0, -0.12vh);
+        transform: translate(0, -0.117vh);
         left: -100%;
     }
 
     50% {
-        transform: translate(0, -0.12vh);
+        transform: translate(0, -0.117vh);
         left: 0;
     }
 
     100% {
-        transform: translate(0, -0.12vh);
+        transform: translate(0, -0.117vh);
         left: 100%;
     }
 }

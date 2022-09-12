@@ -13,8 +13,7 @@ module.exports.loadmodal = async function (req, res) {
 
     try {
         if (req.query) {
-            // const id = req.query.id;
-            // data['pessoa'] = await app.findByPk(id);
+            
         }
         res.render("modal", data);
     } catch (error) {
@@ -55,7 +54,7 @@ const generateRandomString = (num) => {
     return result1;
 }
 
-const downloadVideo = (link, page, videoName, req, res) => new Promise(async (resolve) => {
+const downloadVideo = (link, page, videoName) => new Promise(async (resolve) => {
     try {
         await page.goto(link);
 
@@ -86,11 +85,7 @@ const downloadVideo = (link, page, videoName, req, res) => new Promise(async (re
 });
 
 module.exports.robo = async function (req, res) {
-    if ((req.body.link).length === 0) {
-        var linkkwai = readlineSync.question('Link desejado (Para usar arquivo links digite "all"):') || '';
-    } else {
-        var linkkwai = req.body.link;
-    }
+    var linkkwai = req.body.link;
 
     const browser = await puppeteer.launch({
         headless: true
@@ -111,7 +106,7 @@ module.exports.robo = async function (req, res) {
         }
         bar1.stop();
     } else {
-        await downloadVideo(linkkwai, page, videoName, req, res);
+        await downloadVideo(linkkwai, page, videoName);
     }
 
     await browser.close();

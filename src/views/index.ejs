@@ -98,7 +98,6 @@
         function enviar_link(req, res) {
             link = document.getElementById('link').value;
             if (link.length > 0) {
-
                 document.getElementById('enviar_link').disabled = true;
                 document.getElementById('enviar_link').innerHTML = '<i class="fa fa-spinner fa-pulse"></i> Enviando...';
                 document.getElementById('upload-animation').classList.add('upload-animation');
@@ -120,9 +119,8 @@
 
                         document.getElementById('upload-animation').classList.remove('upload-animation');
                         document.getElementById('upload-animation').classList.add('upload-animation-done');
+
                         setTimeout(() => {
-
-
                             document.getElementById('upload-animation').classList.remove('upload-animation-done');
                             document.getElementById('upload-overflow').classList.remove('upload-overflow');
                             document.getElementById('upload-bar').classList.remove('upload-bar');

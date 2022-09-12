@@ -19,6 +19,6 @@
     "moment": "^2.29.3",
     "puppeteer": "^14.1.1",
     "readline-sync": "^1.4.10",
-    "ytdl-core": "^4.11.0"
+    "ytdl-core": "^4.11.2"
   }
 }
